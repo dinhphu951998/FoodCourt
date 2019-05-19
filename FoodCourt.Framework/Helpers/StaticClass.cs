@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace FoodCourt.Framework.Helpers
 {
-    public static partial class ClaimTypes
-    {
-        public const string UserId = "UserId";
-        public const string Username = "Username";
-        public const string Roles = "Roles";
-    }
+    //public static partial class ClaimTypes
+    //{
+    //    public const string UserId = "UserId";
+    //    public const string Username = "Username";
+    //    public const string Roles = "Roles";
+    //}
 
     public static partial class DateTimeHelpers
     {

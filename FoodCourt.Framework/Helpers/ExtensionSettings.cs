@@ -19,6 +19,15 @@ namespace FoodCourt.Framework.Helpers
                 return appSettings;
             }
         }
+        public AuthenticationInfo AuthenticationInfo
+        {
+            get
+            {
+                var authenSettingsSection = this.configuration.GetSection("Authentication");
+                var authenSettings = authenSettingsSection.Get<AuthenticationInfo>();
+                return authenSettings;
+            }
+        }
 
         public ExtensionSettings(IConfiguration configuration)
         {

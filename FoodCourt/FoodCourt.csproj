@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FoodCourt.Framework\FoodCourt.Framework.csproj" />
-    <ProjectReference Include="..\FoodCourt.Logic\FoodCourt.Logic.csproj" />
+    <ProjectReference Include="..\FoodCourt.Service\FoodCourt.Service.csproj" />
   </ItemGroup>
 
 </Project>

@@ -19,5 +19,32 @@ namespace FoodCourt.Framework.Models
                   errors, services, logger)
         {
         }
+
+        public override bool SupportsUserSecurityStamp => false;
+        public override bool SupportsUserLockout => false;
+        public override bool SupportsUserTwoFactor => false;
+
+        public override Task<IdentityResult> CreateAsync(MyIdentity user)
+        {
+            user.Activated = true;
+            return base.CreateAsync(user);
+        }
+
+        //public override Task UpdateNormalizedEmailAsync(MyIdentity user)
+        //{
+        //    return Task.Run(() =>
+        //    {
+        //        user.NormalizedEmail = user.Email.ToUpper();
+        //    });
+        //}
+
+        //public override Task UpdateNormalizedUserNameAsync(MyIdentity user)
+        //{
+        //    return Task.Run(() =>
+        //    {
+        //        user.NormalizedUserName = user.UserName.ToUpper();
+        //    });
+        //}
+
     }
 }

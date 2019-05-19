@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Doitsu.Service.Core;
 using Doitsu.Service.Core.AuthorizeBuilder;
+using FoodCourt.Framework.ExternalAuthentication;
 using FoodCourt.Framework.Helpers;
 using FoodCourt.Framework.Models;
 using FoodCourt.Framework.ViewModels;
-using FoodCourt.Logic.IdentityLogic;
+using FoodCourt.Service.IdentityService;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -20,6 +26,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace FoodCourt
@@ -52,14 +59,21 @@ namespace FoodCourt
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequireUppercase = true;
-
                 options.User.RequireUniqueEmail = true;
 
             }).AddUserManager<MyUserManager>()
+              .AddSignInManager()
               .AddRoles<IdentityRole<int>>()
               .AddRoleStore<RoleStore<IdentityRole<int>, FoodCourtContext, int>>()
               .AddRoleManager<RoleManager<IdentityRole<int>>>()
               .AddEntityFrameworkStores<FoodCourtContext>();
+
+            services.AddAuthorization(cfg =>
+            {
+                var schemas = new List<string>() { "Bearer" };
+                cfg.DefaultPolicy =
+                new AuthorizationPolicy(cfg.DefaultPolicy.Requirements, schemas);
+            });
 
             SetupAutoMapper();
             setupAuthentication(services);
@@ -77,9 +91,14 @@ namespace FoodCourt
                 cfg.CreateMap<MyIdentity, RegisterViewModel>();
                 cfg.CreateMap<RegisterViewModel, MyIdentity>();
 
-                //cfg.CreateMap<SubmitAnswerViewModel, ResultDetail>();
-                //cfg.CreateMap<ResultDetail, SubmitAnswerViewModel>();
+                cfg.CreateMap<MyIdentity, RegisterExternalViewModel>();
+                cfg.CreateMap<RegisterExternalViewModel, MyIdentity>();
 
+                cfg.CreateMap<Food, FoodViewModel>();
+                cfg.CreateMap<FoodViewModel, Food>();
+
+                cfg.CreateMap<OrderViewModel, Order>();
+                cfg.CreateMap<Order, OrderViewModel>();
             });
 
         }
@@ -87,7 +106,28 @@ namespace FoodCourt
 
         private void setupAuthentication(IServiceCollection services)
         {
-            DoitsuJWTServiceBuilder.BuildJWTService(services);
+            const string scheme = JwtBearerDefaults.AuthenticationScheme;
+            var appSettings = Configuration.GetSection("AppSettings").Get<AppSettings>();
+
+            DoitsuJWTServiceBuilder.BuildJWTService(services, options =>
+            {
+                options.DefaultAuthenticateScheme = scheme;
+                options.DefaultChallengeScheme = scheme;
+                options.DefaultScheme = scheme;
+
+            }, options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = false;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = appSettings.Audience,
+                    ValidIssuer = appSettings.Issuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.Default.GetBytes(appSettings.SecretKey))
+                };
+            });
         }
 
         private void setupDependencyInjection(IServiceCollection services)
@@ -98,6 +138,7 @@ namespace FoodCourt
             services.AddSingleton<IConfiguration>(Configuration);
 
             services.AddScoped<ExtensionSettings>();
+            services.AddScoped<ExternalAuthenticationFactory>();
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IMapper>(Mapper.Instance);
@@ -135,7 +176,7 @@ namespace FoodCourt
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodCourt API");
             });
-            
+
 
 
         }

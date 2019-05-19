@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FoodCourt.Framework.Helpers;
 using FoodCourt.Framework.Models;
 using FoodCourt.Framework.ViewModels;
-using FoodCourt.Logic.IdentityLogic;
+using FoodCourt.Service.IdentityService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,6 +37,15 @@ namespace FoodCourt.Controllers
             return ExecuteInMonitoring(async () =>
             {
                 return await service.RegisterAsync(this.userManager, viewModel);
+            });
+        }
+
+        [HttpPost("registerExternal")]
+        public Task<dynamic> RegisterExternal(RegisterExternalViewModel viewModel)
+        {
+            return ExecuteInMonitoring(async () =>
+            {
+                return await service.RegisterExternalAsync(userManager, viewModel);
             });
         }
 

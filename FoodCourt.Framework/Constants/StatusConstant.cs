@@ -25,6 +25,7 @@ namespace FoodCourt.Framework.Constants
         public const string PASSWORD_NOT_VALID = "Password is not accepted";
         public const string USER_IS_NOT_EXIST = "This user is not in the system";
         public const string USER_CREATE_FAIL = "There is an error while creating this user";
+        public const string LOGIN_WITH_GOOGLE_FAIL = "There is an error while login with Google";
 
         
 

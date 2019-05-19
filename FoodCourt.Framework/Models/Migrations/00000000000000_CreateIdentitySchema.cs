@@ -33,13 +33,12 @@ namespace WebApplication1.Data.Migrations
                               .Annotation("SqlServer:ValueGenerationStrategy",
                               SqlServerValueGenerationStrategy.IdentityColumn),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     PasswordHash = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     AccessFailedCount = table.Column<int>(nullable: false),
-
-                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                 },
                 constraints: table =>
                 {
@@ -49,25 +48,6 @@ namespace WebApplication1.Data.Migrations
                 });
 
 
-            migrationBuilder.CreateTable(
-                name: "UserLogins",
-                columns: table => new
-                {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderDisplayName = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserLogins", x => new { x.LoginProvider, x.ProviderKey });
-                    table.ForeignKey(
-                        name: "FK_UserLogins_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
 
             migrationBuilder.CreateTable(
                 name: "UserRoles",
@@ -92,32 +72,6 @@ namespace WebApplication1.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            //migrationBuilder.CreateTable(
-            //    name: "UserTokens",
-            //    columns: table => new
-            //    {
-            //        UserId = table.Column<int>(nullable: false),
-            //        LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-            //        Name = table.Column<string>(maxLength: 128, nullable: false),
-            //        Value = table.Column<string>(nullable: true)
-            //    },
-            //    constraints: table =>
-            //    {
-            //        table.PrimaryKey("PK_UserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
-            //        table.ForeignKey(
-            //            name: "FK_UserTokens_Users_UserId",
-            //            column: x => x.UserId,
-            //            principalTable: "Users",
-            //            principalColumn: "Id",
-            //            onDelete: ReferentialAction.Cascade);
-            //    });
-
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserLogins_UserId",
-                table: "UserLogins",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_RoleId",

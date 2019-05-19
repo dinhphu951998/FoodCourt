@@ -1,1 +1,1 @@
-﻿Scaffold-DbContext "Server=.;Database=FoodCourt;Trusted_Connection=True;user Id=sa;password=12345678" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+﻿Scaffold-DbContext "Server=.;Database=FoodCourt;Trusted_Connection=True;user Id=sa;password=12345678" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force

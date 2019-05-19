@@ -12,5 +12,7 @@ namespace FoodCourt.Framework.Helpers
         public int TokenExpireTime { get; set; }
 
         public string SaveDirectory { get; set; }
+        public string Audience { get; set; }
+        public string Issuer { get; set; }
     }
 }

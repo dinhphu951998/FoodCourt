@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FoodCourt.Controllers;
+using FoodCourt.Framework.Constants;
 using FoodCourt.Framework.Helpers;
 using FoodCourt.Framework.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodCourt.Controllers
@@ -21,10 +23,14 @@ namespace FoodCourt.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return "Start project successfully";
         }
+
+        [HttpGet("authorizeTest")]
+        [Authorize]
+        public ActionResult<string> GetAuthorize() => "Authorize successfully";
 
         // GET api/values/5
         [HttpGet("{id}")]
@@ -35,6 +41,7 @@ namespace FoodCourt.Controllers
 
         // POST api/values
         [HttpPost]
+        [Authorize]
         public void Post([FromBody] string value)
         {
         }

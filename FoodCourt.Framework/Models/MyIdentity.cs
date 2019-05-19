@@ -9,6 +9,11 @@ namespace FoodCourt.Framework.Models
 {
     public class MyIdentity : DoitsuUserInt
     {
+        public string FullName { get; set; }
+        public string Address { get; set; }
+        public bool Activated { get; set; }
+        public DateTime BirthDate { get; set; }
+
         public async Task<TokenAuthorizeModel> AuthorizeAsync(MyUserManager userManager)
         {
             var roles = await userManager.GetRolesAsync(this);
