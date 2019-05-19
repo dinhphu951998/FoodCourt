@@ -17,8 +17,6 @@ namespace FoodCourt.Framework.Models
             base.OnModelCreating(builder);
             builder.Entity<MyIdentity>().ToTable("Users")
                                            .Ignore(c => c.LockoutEnabled)
-                                           .Ignore(c => c.NormalizedEmail)
-                                           .Ignore(c => c.NormalizedUserName)
                                            .Ignore(c => c.LockoutEnd)
                                            .Ignore(c => c.PhoneNumberConfirmed)
                                            .Ignore(c => c.SecurityStamp)
@@ -29,8 +27,7 @@ namespace FoodCourt.Framework.Models
             builder.Entity<MyIdentity>().Property(c => c.Id).ValueGeneratedOnAdd();
 
             builder.Entity<IdentityRole<int>>().ToTable("Roles")
-                                                .Ignore(r => r.ConcurrencyStamp)
-                                                .Ignore(r => r.NormalizedName);
+                                                .Ignore(r => r.ConcurrencyStamp);
 
             builder.Entity<IdentityRole>().Property(c => c.Id).ValueGeneratedOnAdd();
 

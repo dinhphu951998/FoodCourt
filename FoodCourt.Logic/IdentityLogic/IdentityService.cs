@@ -29,29 +29,31 @@ namespace FoodCourt.Logic.IdentityLogic
         public async Task<TokenAuthorizeModel> AuthorizeAsync(MyUserManager userManager, LoginViewModel viewModel)
         {
             MyIdentity identity = viewModel.ToEntity();
-            bool result = await userManager.CheckPasswordAsync(identity, viewModel.Password);
+            var user = await userManager.FindByNameAsync(identity.UserName);
+            if (user == null) throw new FoodCourtException(ErrorMessage.USER_IS_NOT_EXIST);
+
+            bool result = await userManager.CheckPasswordAsync(user, viewModel.Password);
+
             if (result)
             {
-                return await identity.AuthorizeAsync(userManager);
+                return await user.AuthorizeAsync(userManager);
             }
             throw new FoodCourtException(ErrorMessage.PASSWORD_NOT_VALID);
         }
 
         public async Task<TokenAuthorizeModel> RegisterAsync(MyUserManager userManager, RegisterViewModel viewModel)
         {
-            //validation
-
-
             //save
             var identity = viewModel.ToEntity();
-            identity.PasswordHash = userManager.PasswordHasher.HashPassword(identity, viewModel.Password);
-            IdentityResult result = await userManager.CreateAsync(identity);
+            await userManager.UpdateNormalizedEmailAsync(identity);
+            await userManager.UpdateNormalizedUserNameAsync(identity);
+            await userManager.AddToRoleAsync(identity, RoleType.MEMBER.ToString());
+            IdentityResult result = await userManager.CreateAsync(identity, viewModel.Password);
             if (result.Succeeded)
             {
-                await userManager.AddToRoleAsync(identity, RoleType.MEMBER.ToString());
                 return await identity.AuthorizeAsync(userManager);
             }
-            throw new NotImplementedException();
+            throw new FoodCourtException(ErrorMessage.USER_CREATE_FAIL);
         }
     }
 }

@@ -48,12 +48,18 @@ namespace FoodCourt
                 options.UseSqlServer(Configuration.GetConnectionString("FoodCourt"));
             }).AddScoped(typeof(DbContext), typeof(FoodCourtContext));
 
-            services.AddDefaultIdentity<MyIdentity>()
-                    .AddUserManager<MyUserManager>()
-                    .AddRoles<IdentityRole<int>>()
-                    .AddRoleStore<RoleStore<IdentityRole<int>, FoodCourtContext, int>>()
-                    .AddRoleManager<RoleManager<IdentityRole<int>>>()
-                    .AddEntityFrameworkStores<FoodCourtContext>();
+            services.AddDefaultIdentity<MyIdentity>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireUppercase = true;
+
+                options.User.RequireUniqueEmail = true;
+
+            }).AddUserManager<MyUserManager>()
+              .AddRoles<IdentityRole<int>>()
+              .AddRoleStore<RoleStore<IdentityRole<int>, FoodCourtContext, int>>()
+              .AddRoleManager<RoleManager<IdentityRole<int>>>()
+              .AddEntityFrameworkStores<FoodCourtContext>();
 
             SetupAutoMapper();
             setupAuthentication(services);
