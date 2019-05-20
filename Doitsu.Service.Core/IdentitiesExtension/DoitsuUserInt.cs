@@ -93,7 +93,7 @@ namespace Doitsu.Service.Core.IdentitiesExtension
             };
         }
 
-        public virtual TokenAuthorizeModel AuthorizeAsync(IList<string> userRoles)
+        public virtual TokenAuthorizeModel AuthorizeAsync(IList<string> userRoles, string secretKey, string issuer, string audience)
         {
             var claims = new List<Claim>
             {
@@ -103,9 +103,7 @@ namespace Doitsu.Service.Core.IdentitiesExtension
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.Default.GetBytes(DoitsuJWTValidators.SecretKey);
-            var issuer = DoitsuJWTValidators.Issuer;
-            var audience = DoitsuJWTValidators.Audience;
+            var key = Encoding.Default.GetBytes(secretKey);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
