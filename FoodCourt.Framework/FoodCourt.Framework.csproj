@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Doitsu.Service.Core\Doitsu.Service.Core.csproj" />
+    <ProjectReference Include="..\Doitsu.Service.Core\Doitsu.Service.Core.csproj" />
   </ItemGroup>
 
 </Project>

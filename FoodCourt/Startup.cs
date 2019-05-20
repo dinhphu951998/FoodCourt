@@ -12,6 +12,7 @@ using FoodCourt.Framework.Helpers;
 using FoodCourt.Framework.Models;
 using FoodCourt.Framework.ViewModels;
 using FoodCourt.Service.IdentityService;
+using FoodCourt.Service.StoreService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -99,6 +100,9 @@ namespace FoodCourt
 
                 cfg.CreateMap<OrderViewModel, Order>();
                 cfg.CreateMap<Order, OrderViewModel>();
+
+                cfg.CreateMap<StoreViewModel, Store>();
+                cfg.CreateMap<Store, StoreViewModel>();
             });
 
         }
@@ -141,6 +145,7 @@ namespace FoodCourt
             services.AddScoped<ExternalAuthenticationFactory>();
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IStoreService, StoreService>();
             services.AddSingleton<IMapper>(Mapper.Instance);
         }
 
