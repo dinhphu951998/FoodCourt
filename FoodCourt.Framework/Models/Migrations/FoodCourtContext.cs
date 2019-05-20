@@ -40,7 +40,10 @@ namespace FoodCourt.Framework.Models
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderDetail> OrderDetail { get; set; }
         public virtual DbSet<PurchasedTransaction> PurchasedTransaction { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Store> Store { get; set; }
+        public virtual DbSet<UserRoles> UserRoles { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Wallet> Wallet { get; set; }
 
     }
