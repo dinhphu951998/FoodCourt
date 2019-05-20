@@ -23,27 +23,27 @@ namespace FoodCourt.Controllers
 
 
         [HttpPost("login")]
-        public Task<dynamic> Authorize(LoginViewModel viewModel)
+        public async Task<dynamic> Authorize(LoginViewModel viewModel)
         {
-            return ExecuteInMonitoring( async () =>
+            return await ExecuteInMonitoring( async () =>
             {
                 return await service.AuthorizeAsync(this.userManager, viewModel);
             });
         }
 
         [HttpPost("register")]
-        public Task<dynamic> Register(RegisterViewModel viewModel)
+        public async Task<dynamic> Register(RegisterViewModel viewModel)
         {
-            return ExecuteInMonitoring(async () =>
+            return await ExecuteInMonitoring(async () =>
             {
                 return await service.RegisterAsync(this.userManager, viewModel);
             });
         }
 
         [HttpPost("registerExternal")]
-        public Task<dynamic> RegisterExternal(RegisterExternalViewModel viewModel)
+        public async Task<dynamic> RegisterExternal(RegisterExternalViewModel viewModel)
         {
-            return ExecuteInMonitoring(async () =>
+            return await ExecuteInMonitoring(async () =>
             {
                 return await service.RegisterExternalAsync(userManager, viewModel);
             });

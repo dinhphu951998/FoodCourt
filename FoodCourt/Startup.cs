@@ -48,6 +48,23 @@ namespace FoodCourt
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Foodcourt API", Version = "v1" });
+
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+
+                var security = new Dictionary<string, IEnumerable<string>>
+                                                  {
+                                                      {"Bearer", new string[] { }},
+                                                  };
+
+                c.AddSecurityRequirement(security);
+
+
             });
 
             services.AddDbContext<FoodCourtContext>(options =>
@@ -72,7 +89,7 @@ namespace FoodCourt
             {
                 var schemas = new List<string>() { "Bearer" };
                 cfg.DefaultPolicy =
-                new AuthorizationPolicy(cfg.DefaultPolicy.Requirements, schemas);
+                new AuthorizationPolicy(cfg.DefaultPolicy.Requirements, schemas.AsEnumerable());
             });
 
             SetupAutoMapper();

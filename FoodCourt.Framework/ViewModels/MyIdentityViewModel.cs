@@ -36,7 +36,7 @@ namespace FoodCourt.Framework.ViewModels
         public string FullName { get; set; }
         public string Address { get; set; }
         public bool? Activated { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
     }
 
     public class MyIdentityViewModel : BaseViewModel<MyIdentity>
@@ -55,7 +55,7 @@ namespace FoodCourt.Framework.ViewModels
         public string FullName { get; set; }
         public string Address { get; set; }
         public bool? Activated { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
     }
 
     public class RegisterExternalViewModel : BaseViewModel<MyIdentity>
@@ -75,7 +75,7 @@ namespace FoodCourt.Framework.ViewModels
         public bool? Activated { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
     }
 }
