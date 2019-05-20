@@ -31,14 +31,16 @@ namespace FoodCourt.Service.IdentityService
         private readonly IHttpContextAccessor _httpContext;
         private readonly SignInManager<MyIdentity> _signInManager;
         private ExternalAuthenticationFactory _externalAuthenticationFactory;
+        private ExtensionSettings _extensionSettings;
 
         public IdentityService(IUnitOfWork unitOfWork, IMapper mapper, 
             IHttpContextAccessor httpContext, SignInManager<MyIdentity> signInManager,
-            ExternalAuthenticationFactory _externalAuthenticationFactory) : base(unitOfWork, mapper)
+            ExternalAuthenticationFactory _externalAuthenticationFactory, ExtensionSettings _extensionSettings) : base(unitOfWork, mapper)
         {
             this._httpContext = httpContext;
             this._signInManager = signInManager;
             this._externalAuthenticationFactory = _externalAuthenticationFactory;
+            this._extensionSettings = _extensionSettings;
         }
 
         public async Task<TokenAuthorizeModel> AuthorizeAsync(MyUserManager userManager, LoginViewModel viewModel)
@@ -51,7 +53,7 @@ namespace FoodCourt.Service.IdentityService
 
             if (result)
             {
-                return await user.AuthorizeAsync(userManager);
+                return await user.AuthorizeAsync(userManager, _extensionSettings.appSettings);
             }
             throw new FoodCourtException(ErrorMessage.PASSWORD_NOT_VALID);
         }
@@ -66,7 +68,7 @@ namespace FoodCourt.Service.IdentityService
             if (result.Succeeded)
             {
                 await updateOtherInfoForIdentity(userManager, identity);
-                return await identity.AuthorizeAsync(userManager);
+                return await identity.AuthorizeAsync(userManager, _extensionSettings.appSettings);
             }
             throw new FoodCourtException(ErrorMessage.USER_CREATE_FAIL);
         }
@@ -84,7 +86,7 @@ namespace FoodCourt.Service.IdentityService
             var user = await userManager.FindByNameAsync(identity.UserName);
             if(user != null)
             {
-                return await user.AuthorizeAsync(userManager);
+                return await user.AuthorizeAsync(userManager, _extensionSettings.appSettings);
             }
 
             //if user is not exist in the system
@@ -93,7 +95,7 @@ namespace FoodCourt.Service.IdentityService
             if (result.Succeeded)
             {
                 await updateOtherInfoForIdentity(userManager, identity);
-                return await identity.AuthorizeAsync(userManager);
+                return await identity.AuthorizeAsync(userManager, _extensionSettings.appSettings);
             }
 
             throw new FoodCourtException(ErrorMessage.USER_CREATE_FAIL);
