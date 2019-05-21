@@ -7,6 +7,7 @@ namespace FoodCourt.Framework.Models
     {
         public Users()
         {
+            Account = new HashSet<Account>();
             MoneyTransaction = new HashSet<MoneyTransaction>();
             Order = new HashSet<Order>();
             PurchasedTransaction = new HashSet<PurchasedTransaction>();
@@ -26,7 +27,7 @@ namespace FoodCourt.Framework.Models
         public bool? Activated { get; set; }
         public DateTime? BirthDate { get; set; }
 
-        public virtual Wallet Wallet { get; set; }
+        public virtual ICollection<Account> Account { get; set; }
         public virtual ICollection<MoneyTransaction> MoneyTransaction { get; set; }
         public virtual ICollection<Order> Order { get; set; }
         public virtual ICollection<PurchasedTransaction> PurchasedTransaction { get; set; }

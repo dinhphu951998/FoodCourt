@@ -16,6 +16,7 @@ namespace FoodCourt.Framework.Models
         public DateTime? CreateTime { get; set; }
         public bool? Activated { get; set; }
 
+        public virtual Account Account { get; set; }
         public virtual ICollection<Food> Food { get; set; }
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }

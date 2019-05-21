@@ -16,7 +16,9 @@ namespace FoodCourt.Framework.Models
         public double? Price { get; set; }
         public bool? Activated { get; set; }
         public int? StoreId { get; set; }
+        public int? CategoryId { get; set; }
 
+        public virtual Category Category { get; set; }
         public virtual Store Store { get; set; }
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }
