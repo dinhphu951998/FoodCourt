@@ -62,11 +62,15 @@ namespace FoodCourt.Controllers
             }
             catch (FoodCourtException ex)
             {
-                return BaseResponse.GetErrorResponse(ex.Message);
+                var err = new Dictionary<string, IEnumerable<string>>();
+                err.Add("General", new List<string> { ex.Message });
+                return BaseResponse.GetErrorResponse(err);
             }
             catch (Exception ex)
             {
-                return BaseResponse.GetErrorResponse(ex.ToString());
+                var err = new Dictionary<string, IEnumerable<string>>();
+                err.Add("General", new List<string> { ex.ToString() });
+                return BaseResponse.GetErrorResponse(err);
             }
             return BaseResponse.GetSuccessResponse(result);
         }
@@ -80,11 +84,15 @@ namespace FoodCourt.Controllers
             }
             catch (FoodCourtException ex)
             {
-                return BaseResponse.GetErrorResponse(ex.Message);
+                var err = new Dictionary<string, IEnumerable<string>>();
+                err.Add("General", new List<string> { ex.Message });
+                return BaseResponse.GetErrorResponse(err);
             }
             catch (Exception ex)
             {
-                return BaseResponse.GetErrorResponse(ex.ToString());
+                var err = new Dictionary<string, IEnumerable<string>>();
+                err.Add("General", new List<string> { ex.ToString() });
+                return BaseResponse.GetErrorResponse(err);
             }
             return BaseResponse.GetSuccessResponse(result);
         }

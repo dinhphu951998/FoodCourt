@@ -12,6 +12,6 @@ namespace FoodCourt.Framework.Models
         public int AccountId { get; set; }
 
         public virtual Account Account { get; set; }
-        public virtual Users CreateByNavigation { get; set; }
+        public virtual MyIdentity CreateByNavigation { get; set; }
     }
 }

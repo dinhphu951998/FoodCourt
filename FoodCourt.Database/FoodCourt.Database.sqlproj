@@ -70,8 +70,9 @@
     <Build Include="dbo\Tables\Store.sql" />
     <Build Include="dbo\Tables\Order.sql" />
     <Build Include="dbo\Tables\OrderDetail.sql" />
-    <Build Include="dbo\Tables\Wallet.sql" />
     <Build Include="dbo\Tables\PurchasedTransaction.sql" />
     <Build Include="dbo\Tables\MoneyTransaction.sql" />
+    <Build Include="dbo\Tables\Category.sql" />
+    <Build Include="dbo\Tables\Account.sql" />
   </ItemGroup>
 </Project>

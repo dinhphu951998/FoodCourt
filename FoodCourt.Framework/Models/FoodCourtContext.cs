@@ -21,5 +21,28 @@ namespace FoodCourt.Framework.Models
         public virtual DbSet<PurchasedTransaction> PurchasedTransaction { get; set; }
         public virtual DbSet<Store> Store { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<MyIdentity>().ToTable("Users")
+                                           .Ignore(c => c.LockoutEnabled)
+                                           .Ignore(c => c.LockoutEnd)
+                                           .Ignore(c => c.PhoneNumberConfirmed)
+                                           .Ignore(c => c.SecurityStamp)
+                                           .Ignore(c => c.ConcurrencyStamp)
+                                           .Ignore(c => c.EmailConfirmed)
+                                           .Ignore(c => c.TwoFactorEnabled);
+
+            builder.Entity<MyIdentity>().Property(c => c.Id).ValueGeneratedOnAdd();
+
+            builder.Entity<IdentityRole<int>>().ToTable("Roles")
+                                                .Ignore(r => r.ConcurrencyStamp);
+
+            builder.Entity<IdentityRole>().Property(c => c.Id).ValueGeneratedOnAdd();
+
+            builder.Entity<IdentityUserLogin<int>>().ToTable("UserLogins");
+            builder.Entity<IdentityUserRole<int>>().ToTable("UserRoles");
+        }
+
     }
 }

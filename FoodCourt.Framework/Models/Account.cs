@@ -18,7 +18,7 @@ namespace FoodCourt.Framework.Models
         public int? StoreId { get; set; }
 
         public virtual Store Store { get; set; }
-        public virtual Users User { get; set; }
+        public virtual MyIdentity User { get; set; }
         public virtual ICollection<MoneyTransaction> MoneyTransaction { get; set; }
         public virtual ICollection<PurchasedTransaction> PurchasedTransaction { get; set; }
     }
