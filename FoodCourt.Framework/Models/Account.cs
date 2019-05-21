@@ -10,8 +10,8 @@ namespace FoodCourt.Framework.Models
             MoneyTransaction = new HashSet<MoneyTransaction>();
             PurchasedTransaction = new HashSet<PurchasedTransaction>();
         }
-
         public int Id { get; set; }
+        public string AccountNumber { get; set; }
         public string Type { get; set; }
         public double? Money { get; set; }
         public int? UserId { get; set; }

@@ -3,6 +3,9 @@
     [Name]       NVARCHAR (100) NULL,
     [CreateTime] DATETIME       NULL,
     [Activated]  BIT            NULL,
+    [Logo]       NVARCHAR (MAX) NULL,
     CONSTRAINT [PK_Store] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 
