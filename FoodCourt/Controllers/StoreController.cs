@@ -27,7 +27,7 @@ namespace FoodCourt.Controllers
         {
             return await ExecuteInMonitoring(async () =>
             {
-                return await service.GetStoreById(1);
+                return await service.GetStoreByIdAsync(1);
             });
         }
         [HttpPost()]

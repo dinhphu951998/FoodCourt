@@ -13,24 +13,28 @@ namespace FoodCourt.Service.StoreService
     public interface IStoreService: IBaseService<Store, StoreViewModel>
     {
 
-        Task<StoreViewModel> GetStoreById(int id);
+        Task<StoreViewModel> GetStoreByIdAsync(int id);
         Task<StoreViewModel> CreateStore(StoreViewModel model);
     }
     public class StoreService : BaseService<Store, StoreViewModel>, IStoreService
     {
-        private readonly IHttpContextAccessor _httpContext;
-        public StoreService(IUnitOfWork unitOfWork, IMapper mapper, 
-            IHttpContextAccessor httpContext) : base(unitOfWork, mapper)
+        public StoreService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
-            _httpContext = httpContext;
+        }
+
+        /// <summary>
+        /// Find Store by Id
+        /// </summary>
+        /// <param name="id">integer number</param>
+        /// <returns>Store</returns>
+        public async Task<StoreViewModel> GetStoreByIdAsync(int id)
+        {
+            return await this.FindByIdAsync(id);
         }
 
         #region CRUD
 
-        public async Task<StoreViewModel> GetStoreById(int id)
-        {
-            return await this.FindByIdAsync(id);
-        }
+        
         public async Task<StoreViewModel> CreateStore(StoreViewModel model)
         {
             return await this.CreateAsync(model);

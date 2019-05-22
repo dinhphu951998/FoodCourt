@@ -93,14 +93,18 @@ namespace Doitsu.Service.Core.IdentitiesExtension
             };
         }
 
-        public virtual TokenAuthorizeModel AuthorizeAsync(IList<string> userRoles, string secretKey, string issuer, string audience)
+        public virtual TokenAuthorizeModel AuthorizeAsync(List<string> userRoles, string secretKey, string issuer, string audience)
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, this.Id.ToString()),
                 new Claim(ClaimTypes.Name, this.UserName),
-                new Claim(ClaimTypes.Role, JsonConvert.SerializeObject(userRoles))
+                
             };
+            userRoles.ForEach(ur =>
+            {
+                claims.Add(new Claim(ClaimTypes.Role, ur));
+            });
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.Default.GetBytes(secretKey);
