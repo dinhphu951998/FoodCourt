@@ -7,9 +7,10 @@ namespace FoodCourt.Framework.Models
     {
         public Account()
         {
-            MoneyTransaction = new HashSet<MoneyTransaction>();
-            PurchasedTransaction = new HashSet<PurchasedTransaction>();
+            Payment = new HashSet<Payment>();
+            Transaction = new HashSet<Transaction>();
         }
+
         public int Id { get; set; }
         public string AccountNumber { get; set; }
         public string Type { get; set; }
@@ -19,7 +20,7 @@ namespace FoodCourt.Framework.Models
 
         public virtual Store Store { get; set; }
         public virtual MyIdentity User { get; set; }
-        public virtual ICollection<MoneyTransaction> MoneyTransaction { get; set; }
-        public virtual ICollection<PurchasedTransaction> PurchasedTransaction { get; set; }
+        public virtual ICollection<Payment> Payment { get; set; }
+        public virtual ICollection<Transaction> Transaction { get; set; }
     }
 }
