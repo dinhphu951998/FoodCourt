@@ -9,6 +9,7 @@ namespace FoodCourt.Framework.Models
         {
             Food = new HashSet<Food>();
             Order = new HashSet<Order>();
+            UserStore = new HashSet<UserStore>();
         }
 
         public int Id { get; set; }
@@ -20,5 +21,6 @@ namespace FoodCourt.Framework.Models
         public virtual Account Account { get; set; }
         public virtual ICollection<Food> Food { get; set; }
         public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<UserStore> UserStore { get; set; }
     }
 }

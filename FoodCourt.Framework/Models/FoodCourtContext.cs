@@ -24,6 +24,7 @@ namespace FoodCourt.Framework.Models
         public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<Store> Store { get; set; }
         public virtual DbSet<Transaction> Transaction { get; set; }
+        public virtual DbSet<UserStore> UserStore { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

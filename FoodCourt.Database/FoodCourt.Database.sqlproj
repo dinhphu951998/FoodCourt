@@ -74,5 +74,6 @@
     <Build Include="dbo\Tables\Account.sql" />
     <Build Include="dbo\Tables\Transaction.sql" />
     <Build Include="dbo\Tables\Payment.sql" />
+    <Build Include="dbo\Tables\UserStore.sql" />
   </ItemGroup>
 </Project>
