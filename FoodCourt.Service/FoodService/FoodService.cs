@@ -76,7 +76,9 @@ namespace FoodCourt.Service.FoodService
         public async Task<bool> DeleteFoodAsync(int id)
         {
             await foodValidation.IsValidToDelete(id);
-            await this.DeactiveAsync<int>(id);
+            var food = await this.GetActiveFoodByIdAsync(id);
+            food.Activated = false;
+            await this.UpdateAsync(food);
             return true;
         }
 
