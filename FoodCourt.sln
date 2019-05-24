@@ -41,8 +41,6 @@ Global
 		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.NotBuildDatabaseProjectConfiguration|Any CPU.ActiveCfg = NotBuildDatabaseProjectConfiguration|Any CPU
 		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Release|Any CPU.Build.0 = Release|Any CPU
-		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.NotBuildDatabaseProjectConfiguration|Any CPU.ActiveCfg = NotBuildDatabaseProjectConfiguration|Any CPU
