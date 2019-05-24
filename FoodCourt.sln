@@ -16,29 +16,37 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		NotBuildDatabaseProjectConfiguration|Any CPU = NotBuildDatabaseProjectConfiguration|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{31AE45A4-DE92-4421-8D12-F8609A63876B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31AE45A4-DE92-4421-8D12-F8609A63876B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31AE45A4-DE92-4421-8D12-F8609A63876B}.NotBuildDatabaseProjectConfiguration|Any CPU.ActiveCfg = NotBuildDatabaseProjectConfiguration|Any CPU
+		{31AE45A4-DE92-4421-8D12-F8609A63876B}.NotBuildDatabaseProjectConfiguration|Any CPU.Build.0 = NotBuildDatabaseProjectConfiguration|Any CPU
 		{31AE45A4-DE92-4421-8D12-F8609A63876B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31AE45A4-DE92-4421-8D12-F8609A63876B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA2BB429-D74B-4438-8048-D3E6315D4F73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EA2BB429-D74B-4438-8048-D3E6315D4F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA2BB429-D74B-4438-8048-D3E6315D4F73}.NotBuildDatabaseProjectConfiguration|Any CPU.ActiveCfg = NotBuildDatabaseProjectConfiguration|Any CPU
+		{EA2BB429-D74B-4438-8048-D3E6315D4F73}.NotBuildDatabaseProjectConfiguration|Any CPU.Build.0 = NotBuildDatabaseProjectConfiguration|Any CPU
 		{EA2BB429-D74B-4438-8048-D3E6315D4F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA2BB429-D74B-4438-8048-D3E6315D4F73}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30A919DE-E00E-425A-8464-42BDD231DC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30A919DE-E00E-425A-8464-42BDD231DC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A919DE-E00E-425A-8464-42BDD231DC23}.NotBuildDatabaseProjectConfiguration|Any CPU.ActiveCfg = NotBuildDatabaseProjectConfiguration|Any CPU
+		{30A919DE-E00E-425A-8464-42BDD231DC23}.NotBuildDatabaseProjectConfiguration|Any CPU.Build.0 = NotBuildDatabaseProjectConfiguration|Any CPU
 		{30A919DE-E00E-425A-8464-42BDD231DC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30A919DE-E00E-425A-8464-42BDD231DC23}.Release|Any CPU.Build.0 = Release|Any CPU
 		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.NotBuildDatabaseProjectConfiguration|Any CPU.ActiveCfg = NotBuildDatabaseProjectConfiguration|Any CPU
 		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Release|Any CPU.Build.0 = Release|Any CPU
 		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.NotBuildDatabaseProjectConfiguration|Any CPU.ActiveCfg = NotBuildDatabaseProjectConfiguration|Any CPU
+		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.NotBuildDatabaseProjectConfiguration|Any CPU.Build.0 = NotBuildDatabaseProjectConfiguration|Any CPU
 		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

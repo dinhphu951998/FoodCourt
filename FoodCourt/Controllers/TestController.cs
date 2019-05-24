@@ -6,6 +6,7 @@ using FoodCourt.Controllers;
 using FoodCourt.Framework.Constants;
 using FoodCourt.Framework.Helpers;
 using FoodCourt.Framework.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,12 +33,9 @@ namespace FoodCourt.Controllers
         [Authorize]
         public ActionResult<string> GetAuthorize() => "Authorize successfully";
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
+        [HttpGet("authorize/StoreManager")]
+        [Authorize(Roles = "STOREMANAGER", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public ActionResult<string> GetAuthorizeStoreManager() => "Authorize successfully for Store Manager";
 
         // POST api/values
         [HttpPost]

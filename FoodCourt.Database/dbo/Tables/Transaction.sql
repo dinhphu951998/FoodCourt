@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[MoneyTransaction] (
+﻿CREATE TABLE [dbo].[Transaction] (
     [Id]         INT           IDENTITY (1, 1) NOT NULL,
     [AccountId]  INT           NOT NULL,
     [CreateBy]   INT           NOT NULL,
@@ -10,8 +10,4 @@
     CONSTRAINT [FK_MoneyTransaction_Users] FOREIGN KEY ([CreateBy]) REFERENCES [dbo].[Users] ([Id]),
     CONSTRAINT [IX_MoneyTransaction] UNIQUE NONCLUSTERED ([AccountId] ASC, [CreateBy] ASC)
 );
-
-
-
-
 

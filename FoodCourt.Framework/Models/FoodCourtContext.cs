@@ -12,14 +12,19 @@ namespace FoodCourt.Framework.Models
         {
         }
 
+        protected FoodCourtContext()
+        {
+        }
+
         public virtual DbSet<Account> Account { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Food> Food { get; set; }
-        public virtual DbSet<MoneyTransaction> MoneyTransaction { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderDetail> OrderDetail { get; set; }
-        public virtual DbSet<PurchasedTransaction> PurchasedTransaction { get; set; }
+        public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<Store> Store { get; set; }
+        public virtual DbSet<Transaction> Transaction { get; set; }
+        public virtual DbSet<UserStore> UserStore { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

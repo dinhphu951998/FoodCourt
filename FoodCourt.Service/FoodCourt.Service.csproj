@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <Configurations>Debug;Release;NotBuildDatabaseProjectConfiguration</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,10 +14,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Doitsu.Service.Core\Doitsu.Service.Core.csproj" />
     <ProjectReference Include="..\FoodCourt.Framework\FoodCourt.Framework.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="UnitOfWork\" />
   </ItemGroup>
 
 </Project>
