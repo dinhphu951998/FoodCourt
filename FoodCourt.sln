@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodCourt.Service", "FoodCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodCourt.Framework", "FoodCourt.Framework\FoodCourt.Framework.csproj", "{30A919DE-E00E-425A-8464-42BDD231DC23}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FoodCourt.Database", "FoodCourt.Database\FoodCourt.Database.sqlproj", "{663216FC-05F2-4CFD-91F4-9D8D89C7F689}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doitsu.Service.Core", "Doitsu.Service.Core\Doitsu.Service.Core.csproj", "{C01C0D06-3943-4B92-A58D-B032EFD9A54C}"
 EndProject
 Global
@@ -38,11 +36,6 @@ Global
 		{30A919DE-E00E-425A-8464-42BDD231DC23}.NotBuildDatabaseProjectConfiguration|Any CPU.Build.0 = NotBuildDatabaseProjectConfiguration|Any CPU
 		{30A919DE-E00E-425A-8464-42BDD231DC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30A919DE-E00E-425A-8464-42BDD231DC23}.Release|Any CPU.Build.0 = Release|Any CPU
-		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.NotBuildDatabaseProjectConfiguration|Any CPU.ActiveCfg = NotBuildDatabaseProjectConfiguration|Any CPU
-		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Release|Any CPU.Build.0 = Release|Any CPU
-		{663216FC-05F2-4CFD-91F4-9D8D89C7F689}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C01C0D06-3943-4B92-A58D-B032EFD9A54C}.NotBuildDatabaseProjectConfiguration|Any CPU.ActiveCfg = NotBuildDatabaseProjectConfiguration|Any CPU
