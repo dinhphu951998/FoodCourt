@@ -13,11 +13,11 @@ namespace FoodCourt.Framework.Models
         public int Id { get; set; }
         public double? Total { get; set; }
         public DateTime? CreateTime { get; set; }
-        public bool? Activated { get; set; }
         public DateTime? ReceiveTime { get; set; }
         public int? UserId { get; set; }
+        public string Status { get; set; }
 
-        public virtual Users User { get; set; }
+        public virtual MyIdentity User { get; set; }
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }
 }

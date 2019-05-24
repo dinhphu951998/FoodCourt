@@ -7,9 +7,8 @@ namespace FoodCourt.Framework.ViewModels
 {
     public partial class BaseResponse
     {
-        public string Result { get; set; }
         public bool Success { get; set; }
-        public string Message { get; set; }
+        public dynamic Errors { get; set; }
         public dynamic Data { get; set; }
 
         public static BaseResponse GetSuccessResponse(dynamic data)
@@ -21,12 +20,12 @@ namespace FoodCourt.Framework.ViewModels
             };
         }
 
-        public static BaseResponse GetErrorResponse(string message)
+        public static BaseResponse GetErrorResponse(Dictionary<string, IEnumerable<string>> pairs)
         {
             return new BaseResponse()
             {
                 Success = false,
-                Message = message
+                Errors = pairs
             };
         }
 

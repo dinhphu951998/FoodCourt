@@ -11,7 +11,10 @@ using FoodCourt.Framework.ExternalAuthentication;
 using FoodCourt.Framework.Helpers;
 using FoodCourt.Framework.Models;
 using FoodCourt.Framework.ViewModels;
+using FoodCourt.Service.CategoryService;
+using FoodCourt.Service.FoodService;
 using FoodCourt.Service.IdentityService;
+using FoodCourt.Service.UnitOfWork;
 using FoodCourt.Service.StoreService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -88,9 +91,10 @@ namespace FoodCourt
 
             services.AddAuthorization(cfg =>
             {
-                var schemas = new List<string>() { "Bearer" };
+                var schemas = new List<string>() { JwtBearerDefaults.AuthenticationScheme };
                 cfg.DefaultPolicy =
                 new AuthorizationPolicy(cfg.DefaultPolicy.Requirements, schemas.AsEnumerable());
+                
             });
 
             SetupAutoMapper();
@@ -120,6 +124,10 @@ namespace FoodCourt
 
                 cfg.CreateMap<StoreViewModel, Store>();
                 cfg.CreateMap<Store, StoreViewModel>();
+
+                cfg.CreateMap<CategoryViewModel, Category>();
+                cfg.CreateMap<Category, CategoryViewModel >();
+
             });
 
         }
@@ -161,8 +169,17 @@ namespace FoodCourt
             services.AddScoped<ExtensionSettings>();
             services.AddScoped<ExternalAuthenticationFactory>();
             services.AddScoped<IIdentityService, IdentityService>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, MyUnitOfWork>();
+            services.AddScoped<MyUnitOfWork>();
             services.AddScoped<IStoreService, StoreService>();
+            services.AddScoped<IFoodService, FoodService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<FoodValidation>();
+            services.AddScoped<StoreValidation>();
+            services.AddScoped<CategoryValidation>();
+
+
+
             services.AddSingleton<IMapper>(Mapper.Instance);
         }
 
@@ -192,6 +209,8 @@ namespace FoodCourt
             app.UseMvc();
 
             app.UseAuthentication();
+
+            
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

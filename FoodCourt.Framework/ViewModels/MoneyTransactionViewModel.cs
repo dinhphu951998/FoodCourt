@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Doitsu.Service.Core;
+using FoodCourt.Framework.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace FoodCourt.Framework.Models
+namespace FoodCourt.Framework.ViewModels
 {
-    public partial class MoneyTransaction
+    public class MoneyTransactionViewModel : BaseViewModel<MoneyTransaction>
     {
         public int Id { get; set; }
         public int AccountId { get; set; }
@@ -11,8 +15,5 @@ namespace FoodCourt.Framework.Models
         public double? Money { get; set; }
         public string Type { get; set; }
         public DateTime? CreateTime { get; set; }
-
-        public virtual Account Account { get; set; }
-        public virtual MyIdentity CreateByNavigation { get; set; }
     }
 }

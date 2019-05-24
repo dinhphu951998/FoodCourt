@@ -18,7 +18,7 @@ namespace FoodCourt.Framework.Models
         public async Task<TokenAuthorizeModel> AuthorizeAsync(MyUserManager userManager, AppSettings settings)
         {
             var roles = await userManager.GetRolesAsync(this);
-            return base.AuthorizeAsync(roles, settings.SecretKey, settings.Issuer, settings.Audience);
+            return base.AuthorizeAsync(roles.ToList(), settings.SecretKey, settings.Issuer, settings.Audience);
         }
     }
 }

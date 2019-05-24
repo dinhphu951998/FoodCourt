@@ -175,6 +175,7 @@ namespace Doitsu.Service.Core
         public TViewModel Create(TViewModel viewModel)
         {
             var e = CreateEntity(viewModel);
+            addCreateTime(e);
             selfDbSet.Add(e);
             dbContext.SaveChanges();
             return CreateVM(e);
@@ -182,6 +183,7 @@ namespace Doitsu.Service.Core
         public async Task<TViewModel> CreateAsync(TViewModel viewModel)
         {
             var e = CreateEntity(viewModel);
+            addCreateTime(e);
             await selfDbSet.AddAsync(e);
             await dbContext.SaveChangesAsync();
             return CreateVM(e);
@@ -371,6 +373,14 @@ namespace Doitsu.Service.Core
             return vModel;
         }
         #endregion
+
+        private void addCreateTime(TEntity viewModel)
+        {
+            if (typeof(ICreateTimeEnable).IsAssignableFrom(typeof(TEntity)))
+            {
+                ((ICreateTimeEnable)viewModel).CreateTime = DateTime.UtcNow;
+            }
+        }
     }
 
     public abstract class BaseService<TEntity, TViewModel, TDbContext> : IBaseService<TEntity, TViewModel>

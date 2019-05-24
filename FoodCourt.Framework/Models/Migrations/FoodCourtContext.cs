@@ -35,6 +35,7 @@ namespace FoodCourt.Framework.Models
         //    builder.Entity<IdentityUserRole<int>>().ToTable("UserRoles");
         //}
 
+
         public virtual DbSet<Food> Food { get; set; }
         public virtual DbSet<MoneyTransaction> MoneyTransaction { get; set; }
         public virtual DbSet<Order> Order { get; set; }
