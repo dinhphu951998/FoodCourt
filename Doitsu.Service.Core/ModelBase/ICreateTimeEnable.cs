@@ -6,6 +6,6 @@ namespace Doitsu.Service.Core.ModelBase
 {
     public interface ICreateTimeEnable
     {
-        DateTime CreateTime { get; set; }
+        DateTime? CreateTime { get; set; }
     }
 }

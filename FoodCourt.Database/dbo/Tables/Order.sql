@@ -5,9 +5,13 @@
     [ReceiveTime] DATETIME     NULL,
     [UserId]      INT          NULL,
     [Status]      VARCHAR (50) NULL,
+    [StoreId]     INT          NULL,
     CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Order_Store] FOREIGN KEY ([StoreId]) REFERENCES [dbo].[Store] ([Id]),
     CONSTRAINT [FK_Order_Users] FOREIGN KEY ([UserId]) REFERENCES [dbo].[Users] ([Id])
 );
+
+
 
 
 

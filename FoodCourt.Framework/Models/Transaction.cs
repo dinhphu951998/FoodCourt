@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FoodCourt.Framework.Models
 {
-    public partial class MoneyTransaction
+    public partial class Transaction
     {
         public int Id { get; set; }
         public int AccountId { get; set; }
