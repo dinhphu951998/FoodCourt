@@ -18,6 +18,7 @@ Some utils like logger, identity. Help Developer make 1 web api fatest and easil
         <ReleaseVersion>1.6</ReleaseVersion>
         <SynchReleaseVersion>false</SynchReleaseVersion>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <Configurations>Debug;Release;NotBuildDatabaseProjectConfiguration</Configurations>
     </PropertyGroup>
     <ItemGroup>
         <Folder Include="RepositoryBase\" />
