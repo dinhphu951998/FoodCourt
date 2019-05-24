@@ -42,7 +42,7 @@ namespace FoodCourt.Controllers
                 return await service.AddFoodAsync(model);
             });
         }
-        [HttpPut("FoodController/upadate")]
+        [HttpPut]
         public async Task<dynamic> UpdateFood(FoodViewModel model)
         {
             return await ExecuteInMonitoring(async () =>
@@ -50,7 +50,7 @@ namespace FoodCourt.Controllers
                 return await service.UpdateFoodAsync(model);
             });
         }
-        [HttpPut("FoodController/delete")]
+        [HttpDelete]
         public async Task<dynamic> DeleteFood(int id)
         {
             return await ExecuteInMonitoring(async () =>

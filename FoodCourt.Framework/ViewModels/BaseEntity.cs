@@ -9,8 +9,10 @@ namespace FoodCourt.Framework.Models
 {
     public class BaseEntity
     {
+        public int Id { get; set; }
+
     }
-    public partial class Food : ICreateTimeEnable, IActivable
+    public partial class Food : BaseEntity, ICreateTimeEnable, IActivable
     {
 
     }
@@ -19,16 +21,36 @@ namespace FoodCourt.Framework.Models
     {
     }
 
-    public partial class Order : ICreateTimeEnable
+    public partial class Order : BaseEntity, ICreateTimeEnable
     {
     }
 
-    public partial class Store : ICreateTimeEnable, IActivable
+    public partial class Store : BaseEntity, ICreateTimeEnable, IActivable
     {
     }
 
-    public partial class Transaction : ICreateTimeEnable
+    public partial class Transaction : BaseEntity, ICreateTimeEnable
     {
 
     }
+    public partial class Account : BaseEntity
+    {
+
+    }
+
+    public partial class Category : BaseEntity
+    {
+
+    }
+    
+    public partial class OrderDetail : BaseEntity
+    {
+
+    }
+    
+    public partial class Payment : BaseEntity
+    {
+
+    }
+
 }

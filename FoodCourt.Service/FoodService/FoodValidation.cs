@@ -15,8 +15,8 @@ namespace FoodCourt.Service.FoodService
 {
     public class FoodValidation : BaseValidation<Food, FoodViewModel>
     {
-        private StoreValidation storeValidation;
-        private CategoryValidation categoryValidation;
+        private readonly StoreValidation storeValidation;
+        private readonly CategoryValidation categoryValidation;
 
         public new const string ID_NOT_EXISTED = ErrorMessage.FOODID_NOT_EXISTED;
 

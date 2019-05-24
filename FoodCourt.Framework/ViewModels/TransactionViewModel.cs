@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FoodCourt.Framework.ViewModels
 {
-    public class MoneyTransactionViewModel : BaseViewModel<MoneyTransaction>
+    public class TransactionViewModel : BaseViewModel<Transaction>
     {
         public int Id { get; set; }
         public int AccountId { get; set; }
