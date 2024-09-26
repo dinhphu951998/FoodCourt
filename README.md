@@ -1,1 +1,2 @@
+[![Board Status](https://dev.azure.com/ngdinhphu98/94b1cd2e-60a7-48b6-a0bd-7d4eb80ae09d/1097389c-a652-4f9a-b71e-c807e20a2c2e/_apis/work/boardbadge/c7190d9d-26a3-4988-8137-6b0010eeb482)](https://dev.azure.com/ngdinhphu98/94b1cd2e-60a7-48b6-a0bd-7d4eb80ae09d/_boards/board/t/1097389c-a652-4f9a-b71e-c807e20a2c2e/Microsoft.RequirementCategory)
 # FoodCourt
