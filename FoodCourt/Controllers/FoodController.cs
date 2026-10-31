@@ -19,7 +19,7 @@ namespace FoodCourt.Controllers
     {
         private IFoodService service;
         public FoodController(ExtensionSettings extensionSettings, MyUserManager userManager,
-            IFoodService service) 
+            IFoodService service)
             : base(extensionSettings, userManager)
         {
             this.service = service;
@@ -32,6 +32,19 @@ namespace FoodCourt.Controllers
             {
                 return await service.GetActiveFoodByIdAsync(id);
             });
+        }
+
+        [HttpGet("page")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetFoodPage(int id)
+        {
+            var food = await service.GetActiveFoodByIdAsync(id);
+            if (food == null)
+            {
+                return NotFound();
+            }
+            var html = $"<html><body><h1>{food.Name}</h1><p>{food.Description}</p><img src=\"{food.ImageUrl}\" /></body></html>";
+            return Content(html, "text/html");
         }
 
         [HttpPost]
